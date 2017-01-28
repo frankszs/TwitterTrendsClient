@@ -14,5 +14,7 @@ class Tweet: NSObject {
     var retweetCount : Int?
     var favoriteCount : Int?
     
+    var user : User?
+    
     
 }

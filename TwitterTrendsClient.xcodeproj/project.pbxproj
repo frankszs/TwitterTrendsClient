@@ -13,6 +13,8 @@
 		C870A9C31E396C0200683EDA /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C870A9C21E396C0200683EDA /* Trend.swift */; };
 		C870A9C51E39A4C800683EDA /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C870A9C41E39A4C800683EDA /* Tweet.swift */; };
 		C870A9CA1E39A98100683EDA /* TweetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C870A9C91E39A98100683EDA /* TweetsController.swift */; };
+		C895B6281E3C09DC00CB7D60 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C895B6271E3C09DC00CB7D60 /* ProfileImageView.swift */; };
+		C895B62B1E3C0DBF00CB7D60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C895B62A1E3C0DBF00CB7D60 /* User.swift */; };
 		C8C211291E33CA5E00F394ED /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C211281E33CA5E00F394ED /* Client.swift */; };
 		C8D5DDD51E2E0E26007ACD44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D5DDD41E2E0E26007ACD44 /* AppDelegate.swift */; };
 		C8D5DDD71E2E0E26007ACD44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D5DDD61E2E0E26007ACD44 /* ViewController.swift */; };
@@ -31,6 +33,8 @@
 		C870A9C21E396C0200683EDA /* Trend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		C870A9C41E39A4C800683EDA /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C870A9C91E39A98100683EDA /* TweetsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsController.swift; sourceTree = "<group>"; };
+		C895B6271E3C09DC00CB7D60 /* ProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		C895B62A1E3C0DBF00CB7D60 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C8C211281E33CA5E00F394ED /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		C8D5DDD11E2E0E26007ACD44 /* TwitterTrendsClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterTrendsClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D5DDD41E2E0E26007ACD44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			children = (
 				C870A9C21E396C0200683EDA /* Trend.swift */,
 				C870A9C41E39A4C800683EDA /* Tweet.swift */,
+				C895B62A1E3C0DBF00CB7D60 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -86,6 +91,14 @@
 				C870A9C91E39A98100683EDA /* TweetsController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C895B6291E3C09E500CB7D60 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				C895B6271E3C09DC00CB7D60 /* ProfileImageView.swift */,
+			);
+			name = UIComponents;
 			sourceTree = "<group>";
 		};
 		C8D5DDC81E2E0E26007ACD44 = {
@@ -114,6 +127,7 @@
 				C870A9C81E39A51A00683EDA /* ViewControllers */,
 				C870A9C71E39A50D00683EDA /* Cells */,
 				C870A9C61E39A4D800683EDA /* Model */,
+				C895B6291E3C09E500CB7D60 /* UIComponents */,
 				C8D5DDD81E2E0E26007ACD44 /* Main.storyboard */,
 				C8D5DDDB1E2E0E26007ACD44 /* Assets.xcassets */,
 				C8D5DDDD1E2E0E26007ACD44 /* LaunchScreen.storyboard */,
@@ -262,7 +276,9 @@
 				C85DFB171E39AEE10097C18B /* TweetCell.swift in Sources */,
 				C870A9C31E396C0200683EDA /* Trend.swift in Sources */,
 				C870A9C51E39A4C800683EDA /* Tweet.swift in Sources */,
+				C895B6281E3C09DC00CB7D60 /* ProfileImageView.swift in Sources */,
 				C8C211291E33CA5E00F394ED /* Client.swift in Sources */,
+				C895B62B1E3C0DBF00CB7D60 /* User.swift in Sources */,
 				C870A9C11E396BF300683EDA /* TrendCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

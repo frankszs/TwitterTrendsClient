@@ -38,10 +38,7 @@ class Client: NSObject {
                     //Max amount check.
                     if index >= amount { break }
                     
-                    let trend = Trend()
-                    if let trendJson = object as? Dictionary<String, Any>{
-                        trend.name = trendJson["name"] as? String
-                        trend.query = trendJson["query"] as? String
+                    if let trend = self.parseTrend(dictionary: object as? NSDictionary){
                         trendObjects.append(trend)
                     }
                 }
@@ -66,17 +63,14 @@ class Client: NSObject {
                 var tweetObjects = [Tweet]()
                 
                 //Parse tweets into Tweet objects.
-                for tweet in tweets as! [NSDictionary]{
-                    let tweetObject = Tweet()
-                    tweetObject.text = tweet.value(forKey: "text") as! String?;
-                    tweetObject.retweetCount = Int(tweet.value(forKey: "retweet_count") as! NSNumber);
-                    tweetObject.favoriteCount = Int(tweet.value(forKey: "favorite_count") as! NSNumber);
-                    tweetObjects.append(tweetObject)
+                for object in tweets as! [NSDictionary]{
+                    
+                    if let tweet = self.parseTweet(dictionary: object){
+                        tweetObjects.append(tweet)
+                    }
                 }
-                
-                print(tweetObjects)
             
-                //Run closure bl with tweets.
+                //Run closure with tweets.
                 success(tweetObjects);
                 
                 }, errorBlock: { (error) in failure(error as! NSError);  print("errror \(error?.localizedDescription)")})
@@ -84,5 +78,41 @@ class Client: NSObject {
             }) { (error) in
         }
     }
-
+    
+    func parseTrend(dictionary : NSDictionary?) -> Trend?{
+        
+        guard let dictionary = dictionary else { return nil }
+        
+        let trend = Trend()
+        trend.name = dictionary["name"] as? String
+        trend.query = dictionary["query"] as? String
+       
+        return trend
+    }
+    
+    func parseTweet(dictionary : NSDictionary?) -> Tweet?{
+        
+        guard let dictionary = dictionary else { return nil }
+        
+        let tweet = Tweet()
+        tweet.text = dictionary.value(forKey: "text") as! String?;
+        tweet.retweetCount = Int(dictionary.value(forKey: "retweet_count") as! NSNumber);
+        tweet.favoriteCount = Int(dictionary.value(forKey: "favorite_count") as! NSNumber);
+        
+        tweet.user = parseUser(dictionary: (dictionary.value(forKey: "user") as! NSDictionary?))
+        
+        return tweet
+    }
+    
+    func parseUser(dictionary : NSDictionary?) -> User?{
+        
+        guard let dictionary = dictionary else { return nil }
+        
+        let user = User()
+        user.name = dictionary.value(forKey: "name") as! String?
+        user.screenName = dictionary.value(forKey: "screen_name") as! String?
+        user.profileImageLink = dictionary.value(forKey: "profile_image_url_https") as! String?
+        
+        return user
+    }
 }
