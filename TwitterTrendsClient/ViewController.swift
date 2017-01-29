@@ -84,7 +84,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 extension ViewController : TweetCacheProtocol{
     
     func updateCache(tweets: [Tweet], for trend: Trend) {
-        self.tweetCache?.setObject(tweets, forKey: trend.query! as NSCopying)
+        self.tweetCache?.setObject(tweets, forKey: trend.name! as NSCopying)
     }
 }
 

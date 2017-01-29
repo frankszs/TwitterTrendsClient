@@ -11,14 +11,14 @@ import UIKit
 class TweetCell: UITableViewCell {
 
     @IBOutlet var nameLabel : UILabel!
-    @IBOutlet var retweetLabel : UILabel?
-    @IBOutlet var retweetImageView : UIImageView?
+    @IBOutlet var userNameLabel : UILabel!
+    @IBOutlet var userProfileImageView : UIImageView!
 
     
     var tweet : Tweet? {
         willSet{
             self.nameLabel.text = newValue?.text
-            self.retweetLabel?.text = "\(newValue!.retweetCount!)"
+            self.userNameLabel?.text = newValue?.user?.screenName
         }
     }
 
@@ -34,12 +34,12 @@ class TweetCell: UITableViewCell {
         if highlighted{
             self.backgroundColor = self.color
             self.nameLabel.textColor = UIColor.white
-            self.retweetLabel?.textColor = UIColor.white
+            self.userNameLabel?.textColor = UIColor.white
         }
         else{
             self.backgroundColor = UIColor.white
             self.nameLabel.textColor = self.color
-            self.retweetLabel?.textColor = UIColor.lightGray
+            self.userNameLabel?.textColor = UIColor.darkGray
         }
         
     }

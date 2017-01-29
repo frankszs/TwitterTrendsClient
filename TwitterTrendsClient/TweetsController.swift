@@ -57,6 +57,35 @@ class TweetsController: UIViewController {
         }
     }
     
+    func getImageWithLink(linkString : String, completion : @escaping (UIImage?) -> Void){
+        
+        let client = Client.sharedInstance
+        
+        //Check if cache has image.
+        if let image = client.imageCache.object(forKey: linkString as NSString) as? UIImage{
+            completion(image)
+        }
+        //Need to download image.
+        else{
+            let url = URL.init(string: linkString);
+            guard url != nil else { return }
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+              
+                if error != nil{
+                    print("Error downloading image with error: \(error)")
+                    return
+                }
+                
+                //Image was downloaded.
+                let image = UIImage(data: data!)
+                client.imageCache.setObject(image!, forKey: linkString as NSString)
+                
+                DispatchQueue.main.async(execute: { completion(image) })
+                
+            }).resume()
+        }
+    }
+    
 }
 
 extension TweetsController : UITableViewDataSource, UITableViewDelegate{
@@ -67,13 +96,15 @@ extension TweetsController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let tweet = self.tweets?[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: tweetCellID) as! TweetCell
-        cell.tweet = self.tweets?[indexPath.row]
+        cell.tweet = tweet
+        
+        self.getImageWithLink(linkString: (tweet?.user?.profileImageLink)!) { (image) in
+            cell.userProfileImageView.image = image
+        }
         
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-////        return
-//    }
 }

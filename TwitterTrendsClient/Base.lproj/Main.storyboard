@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FOW-nP-DKE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PFj-sa-2WE">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="VPe-mJ-DVM">
@@ -83,7 +83,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Rip-pn-Red"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JeB-Cd-gLS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DTG-re-GBC">
@@ -96,21 +96,39 @@
                                             <frame key="frameInset" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiZ-Kr-g7A">
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiZ-Kr-g7A">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.68285968959731547" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mba-Bx-oYG" customClass="ProfileImageView" customModule="TwitterTrendsClient" customModuleProvider="target">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="29C-tD-hQ0"/>
+                                                        <constraint firstAttribute="height" constant="35" id="6Cv-mn-QqY"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pca-u8-boX">
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="OiZ-Kr-g7A" secondAttribute="trailing" constant="20" id="4Bg-Fx-UPd"/>
+                                                <constraint firstItem="Mba-Bx-oYG" firstAttribute="leading" secondItem="g8a-tt-fFN" secondAttribute="leading" constant="20" id="L30-T1-fxo"/>
                                                 <constraint firstAttribute="bottom" secondItem="OiZ-Kr-g7A" secondAttribute="bottom" constant="10" id="aXh-RS-JEw"/>
                                                 <constraint firstItem="OiZ-Kr-g7A" firstAttribute="leading" secondItem="g8a-tt-fFN" secondAttribute="leading" constant="20" id="cR8-Hy-xrp"/>
-                                                <constraint firstItem="OiZ-Kr-g7A" firstAttribute="top" secondItem="g8a-tt-fFN" secondAttribute="top" constant="10" id="k2t-Ws-2fS"/>
+                                                <constraint firstItem="Mba-Bx-oYG" firstAttribute="top" secondItem="g8a-tt-fFN" secondAttribute="top" constant="10" id="dEV-Dq-pb8"/>
+                                                <constraint firstItem="Pca-u8-boX" firstAttribute="leading" secondItem="Mba-Bx-oYG" secondAttribute="trailing" constant="15" id="eQj-HL-EY1"/>
+                                                <constraint firstItem="Pca-u8-boX" firstAttribute="centerY" secondItem="Mba-Bx-oYG" secondAttribute="centerY" id="iHz-Ks-YFd"/>
+                                                <constraint firstItem="OiZ-Kr-g7A" firstAttribute="top" secondItem="g8a-tt-fFN" secondAttribute="top" constant="60" id="k2t-Ws-2fS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pca-u8-boX" secondAttribute="trailing" constant="10" id="xYY-yl-eG8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="OiZ-Kr-g7A" id="yJl-ej-QqG"/>
+                                            <outlet property="userNameLabel" destination="Pca-u8-boX" id="L59-QU-L6S"/>
+                                            <outlet property="userProfileImageView" destination="Mba-Bx-oYG" id="O9G-se-1Wb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -136,10 +154,30 @@
             </objects>
             <point key="canvasLocation" x="1815.2" y="37.331334332833585"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--View Controller-->
+        <scene sceneID="hE4-Jn-3Ey">
+            <objects>
+                <viewController id="Qvd-3b-lW1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xWK-hH-5CZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="oY2-aD-O9f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H5I-rF-Fek">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1HS-mq-7us"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g9o-hq-ojd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1896.8" y="-1478.4107946026988"/>
+        </scene>
+        <!--Trends-->
         <scene sceneID="RA8-nD-lW0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FOW-nP-DKE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Trends" image="World" id="vQa-HE-KsH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jp9-sH-c8c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -152,9 +190,49 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DB8-Sd-F6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="309.60000000000002" y="-645.42728635682158"/>
+            <point key="canvasLocation" x="972" y="-718"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="6Qz-Ra-oOC">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="PFj-sa-2WE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="cJb-vu-mq3">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="FOW-nP-DKE" kind="relationship" relationship="viewControllers" id="4NU-d7-hFs"/>
+                        <segue destination="OgQ-c1-oQi" kind="relationship" relationship="viewControllers" id="I5w-gJ-Dea"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nra-Qc-1sR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-124" y="-718"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ToN-2d-pnK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="OgQ-c1-oQi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="Okg-a6-SZE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RoL-o3-Uhi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qvd-3b-lW1" kind="relationship" relationship="rootViewController" id="0uH-C1-4HV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tjj-Tj-5r3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957.60000000000002" y="-1478.4107946026988"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="World" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SvG-ze-1SQ"/>
     </inferredMetricsTieBreakers>

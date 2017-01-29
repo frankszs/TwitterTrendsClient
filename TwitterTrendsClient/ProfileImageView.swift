@@ -10,15 +10,16 @@ import UIKit
 
 class ProfileImageView: UIImageView {
     
-    override var frame: CGRect{
-        willSet{
-            let width = newValue.width
-            self.layer.cornerRadius = width/2.0
-        }
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.lightGray
+        self.layer.masksToBounds = true
+    
+    }
+    
+    
+    override func layoutSubviews() {
+        let width = self.bounds.width
+        self.layer.cornerRadius = width/2.0
     }
 }

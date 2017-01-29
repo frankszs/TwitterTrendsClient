@@ -16,13 +16,16 @@ class Client: NSObject {
     
     var twitterAppOnlyAPI : STTwitterAPI
     
+    //Stores links as keys and images as values.
+    var imageCache = NSCache<AnyObject, AnyObject>()
+    
     override init(){
         
         self.twitterAppOnlyAPI = STTwitterAPI.init(appOnlyWithConsumerKey:Client.consumerKey, consumerSecret: Client.consumerSecret)
-        
     }
     
-    //MARK: GET Methods
+    //MARK: - GET Methods
+    
     func getTopTrends(WOEID : String, amount : Int = 10, success : @escaping ([Trend]) -> Void, failure : @escaping (NSError) -> Void){
         
         self.twitterAppOnlyAPI.verifyCredentials(userSuccessBlock: { (user, id) in
@@ -55,8 +58,10 @@ class Client: NSObject {
         
         self.twitterAppOnlyAPI.verifyCredentials(userSuccessBlock: { (user, id) in
             
+            
+            
             //Retrive JSON data.
-            self.twitterAppOnlyAPI.getSearchTweets(withQuery: searchText, successBlock: { (metaData, tweets) in
+            self.twitterAppOnlyAPI.getSearchTweets(withQuery: searchText, geocode: nil, lang: nil, locale: nil, resultType: nil, count: "50", until: nil, sinceID: nil, maxID: nil, includeEntities: nil, callback: nil, useExtendedTweetMode: nil, successBlock: { (metaData, tweets) in
                 
                 guard let tweets = tweets else { return }
                 
@@ -79,7 +84,9 @@ class Client: NSObject {
         }
     }
     
-    func parseTrend(dictionary : NSDictionary?) -> Trend?{
+    //MARK: - Parse Methods
+    
+   private func parseTrend(dictionary : NSDictionary?) -> Trend?{
         
         guard let dictionary = dictionary else { return nil }
         
@@ -90,7 +97,7 @@ class Client: NSObject {
         return trend
     }
     
-    func parseTweet(dictionary : NSDictionary?) -> Tweet?{
+    private func parseTweet(dictionary : NSDictionary?) -> Tweet?{
         
         guard let dictionary = dictionary else { return nil }
         
@@ -104,7 +111,7 @@ class Client: NSObject {
         return tweet
     }
     
-    func parseUser(dictionary : NSDictionary?) -> User?{
+    private func parseUser(dictionary : NSDictionary?) -> User?{
         
         guard let dictionary = dictionary else { return nil }
         
