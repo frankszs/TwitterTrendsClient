@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TweetsController: UIViewController {
     
@@ -19,9 +20,13 @@ class TweetsController: UIViewController {
     var tweets : [Tweet]?
     
     var cacheDelegate : TweetCacheProtocol?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var context : NSManagedObjectContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.context = appDelegate.persistentContainer.viewContext
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(reloadData), for: UIControlEvents.valueChanged)
@@ -29,6 +34,10 @@ class TweetsController: UIViewController {
         self.tableView.backgroundColor = UIColor.white
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 50
+        
+        self.tableView.register(UINib.init(nibName: "TweetCell", bundle: nil), forCellReuseIdentifier: tweetCellID)
+        
+        self.navigationItem.title = self.trend?.name
         
         self.reloadData()
     }
@@ -71,8 +80,8 @@ class TweetsController: UIViewController {
             guard url != nil else { return }
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
               
-                if error != nil{
-                    print("Error downloading image with error: \(error)")
+                if let nserror = error {
+                    print("Error downloading image with error: \(nserror.localizedDescription)")
                     return
                 }
                 
@@ -84,6 +93,17 @@ class TweetsController: UIViewController {
                 
             }).resume()
         }
+    }
+    
+    @IBAction func saveButtonDidTap(){
+        
+        //Create savedTrend
+        guard let context = self.context else { return }
+        let savedTrend = SavedTrend(context: context)
+        savedTrend.name = self.trend?.name
+        savedTrend.query = self.trend?.query
+        self.appDelegate.saveContext()
+        print("SAVED")
     }
     
 }

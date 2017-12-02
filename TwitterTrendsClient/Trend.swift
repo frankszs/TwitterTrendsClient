@@ -12,5 +12,15 @@ class Trend: NSObject {
     
     var name : String?
     var query : String?
+    var tweetVolume : Int64?
+    
+    override init() {
+        
+    }
+    
+    init(savedTrend : SavedTrend?){
+        name = savedTrend?.name
+        query = savedTrend?.query
+    }
 
 }

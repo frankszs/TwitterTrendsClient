@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TweetCell" customModule="TwitterTrendsClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xR0-hX-3nW">
+                    <rect key="frame" x="75" y="25" width="290" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpx-9p-pM2">
+                    <rect key="frame" x="20" y="65" width="335" height="60"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.68285968959999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbP-wB-c1W">
+                    <rect key="frame" x="15" y="15" width="40" height="40"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l3Z-vc-Ueh" customClass="ProfileImageView" customModule="TwitterTrendsClient" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="l3Z-vc-Ueh" secondAttribute="trailing" id="0aO-06-I91"/>
+                        <constraint firstAttribute="width" constant="40" id="5s3-ae-uLp"/>
+                        <constraint firstItem="l3Z-vc-Ueh" firstAttribute="top" secondItem="HbP-wB-c1W" secondAttribute="top" id="EDe-NU-2EB"/>
+                        <constraint firstItem="l3Z-vc-Ueh" firstAttribute="leading" secondItem="HbP-wB-c1W" secondAttribute="leading" id="KIh-2B-L1Y"/>
+                        <constraint firstAttribute="height" constant="40" id="Yhy-bz-0FM"/>
+                        <constraint firstAttribute="bottom" secondItem="l3Z-vc-Ueh" secondAttribute="bottom" id="zJb-N3-lg7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Vpx-9p-pM2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="03j-wm-gnb"/>
+                <constraint firstItem="xR0-hX-3nW" firstAttribute="leading" secondItem="HbP-wB-c1W" secondAttribute="trailing" constant="20" id="1rQ-ZU-abQ"/>
+                <constraint firstItem="xR0-hX-3nW" firstAttribute="centerY" secondItem="HbP-wB-c1W" secondAttribute="centerY" id="2ma-AB-Ax1"/>
+                <constraint firstItem="Vpx-9p-pM2" firstAttribute="top" secondItem="HbP-wB-c1W" secondAttribute="bottom" constant="10" id="DO5-gr-aXh"/>
+                <constraint firstItem="HbP-wB-c1W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Gbc-EX-Oy7"/>
+                <constraint firstAttribute="bottom" secondItem="Vpx-9p-pM2" secondAttribute="bottom" constant="10" id="RTj-Nt-rlR"/>
+                <constraint firstItem="HbP-wB-c1W" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Ve6-6a-Zss"/>
+                <constraint firstAttribute="trailing" secondItem="Vpx-9p-pM2" secondAttribute="trailing" constant="20" id="WT8-Xj-cCZ"/>
+                <constraint firstAttribute="trailing" secondItem="xR0-hX-3nW" secondAttribute="trailing" constant="10" id="igR-RH-iYR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tweetLabel" destination="Vpx-9p-pM2" id="nj0-ep-ZNh"/>
+                <outlet property="userNameLabel" destination="xR0-hX-3nW" id="fKP-k8-3pb"/>
+                <outlet property="userProfileImageView" destination="l3Z-vc-Ueh" id="yBh-NC-EFz"/>
+                <outlet property="userProfileShadowView" destination="HbP-wB-c1W" id="NNj-eE-VhX"/>
+            </connections>
+            <point key="canvasLocation" x="-50.5" y="281.5"/>
+        </view>
+    </objects>
+</document>

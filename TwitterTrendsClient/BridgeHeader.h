@@ -15,3 +15,4 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <STTwitter/STTwitter.h>
+#import "SegmentedView.h"

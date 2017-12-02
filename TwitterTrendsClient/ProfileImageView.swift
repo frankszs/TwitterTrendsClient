@@ -17,7 +17,6 @@ class ProfileImageView: UIImageView {
     
     }
     
-    
     override func layoutSubviews() {
         let width = self.bounds.width
         self.layer.cornerRadius = width/2.0

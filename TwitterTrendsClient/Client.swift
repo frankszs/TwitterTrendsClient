@@ -93,6 +93,7 @@ class Client: NSObject {
         let trend = Trend()
         trend.name = dictionary["name"] as? String
         trend.query = dictionary["query"] as? String
+        trend.tweetVolume = dictionary["tweet_volume"] as? Int64
        
         return trend
     }
