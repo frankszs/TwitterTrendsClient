@@ -30,6 +30,7 @@
 		C8DD40361FD2714300450726 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C8DD40341FD2714300450726 /* DataModel.xcdatamodeld */; };
 		C8DD404D1FD2910200450726 /* SegmentedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DD404B1FD2910200450726 /* SegmentedView.m */; };
 		C8DE1B3C1E3D814D003C62A4 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DE1B3B1E3D814D003C62A4 /* ProfileImageView.swift */; };
+		C8E35AB61FD37CCB0034EA32 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E35AB51FD37CCB0034EA32 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		C8DD404B1FD2910200450726 /* SegmentedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentedView.m; sourceTree = "<group>"; };
 		C8DD404C1FD2910200450726 /* SegmentedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedView.h; sourceTree = "<group>"; };
 		C8DE1B3B1E3D814D003C62A4 /* ProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		C8E35AB51FD37CCB0034EA32 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			children = (
 				C8D5DDD41E2E0E26007ACD44 /* AppDelegate.swift */,
 				C8C211281E33CA5E00F394ED /* Client.swift */,
+				C8E35AB51FD37CCB0034EA32 /* Storage.swift */,
 				C870A9C81E39A51A00683EDA /* ViewControllers */,
 				C870A9C71E39A50D00683EDA /* Cells */,
 				C870A9C61E39A4D800683EDA /* Model */,
@@ -317,6 +320,7 @@
 				C8A74D311E3F0AA800C33302 /* SearchController.swift in Sources */,
 				C8DD40361FD2714300450726 /* DataModel.xcdatamodeld in Sources */,
 				C895B62B1E3C0DBF00CB7D60 /* User.swift in Sources */,
+				C8E35AB61FD37CCB0034EA32 /* Storage.swift in Sources */,
 				C870A9C11E396BF300683EDA /* TrendCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

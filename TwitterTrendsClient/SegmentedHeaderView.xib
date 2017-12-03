@@ -17,10 +17,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4E-BB-NRO" customClass="SegmentedView">
-                    <rect key="frame" x="20" y="20" width="335" height="34"/>
+                    <rect key="frame" x="20" y="20" width="335" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="34" id="CN7-Qm-aV4"/>
+                        <constraint firstAttribute="height" constant="30" id="CN7-Qm-aV4"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="styleInteger">
@@ -30,13 +30,13 @@
                             <color key="value" red="0.048829425609999998" green="0.72179365620000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="stageCornerRadius">
-                            <real key="value" value="17"/>
+                            <real key="value" value="15"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="panelColor">
                             <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="panelCornerRadius">
-                            <real key="value" value="16"/>
+                            <real key="value" value="14"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="panelInset">
                             <real key="value" value="2.5"/>
@@ -49,7 +49,7 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="System"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <real key="value" value="16"/>
+                            <real key="value" value="15"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                             <real key="value" value="0.0"/>
@@ -57,7 +57,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHq-gK-JpQ">
-                    <rect key="frame" x="0.0" y="74" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="70" width="375" height="1"/>
                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="m70-oj-J4B"/>

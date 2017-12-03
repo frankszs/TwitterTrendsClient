@@ -11,11 +11,17 @@ import CoreData
 
 protocol TweetCacheProtocol{
     
+    /**Updates the cache with an array of Tweets for a Trend.
+     
+     - parameter tweets: hes
+     
+     */
     func updateCache(tweets : [Tweet], for trend : Trend)
 }
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
+    
     let trendCellID = "trendCell"
     let segmentedHeaderViewID = "SegmentedHeaderView"
     
@@ -38,13 +44,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        
         do{
-            let savedTrends : [SavedTrend]? = try context.fetch(SavedTrend.fetchRequest())
+            let savedTrends : [SavedTrend]? = try Storage.context.fetch(SavedTrend.fetchRequest())
             self.savedTrends = savedTrends
-        } catch { print("ERROR GETTING TRENDS")}
+        } catch {}
         
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -60,18 +63,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.tableView.register(UINib.init(nibName: "SegmentedHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: segmentedHeaderViewID)
         
         self.reloadData()
-        
     }
     
     func reloadData(){
         
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         do{
-            let savedTrends : [SavedTrend]? = try context.fetch(SavedTrend.fetchRequest())
+            let savedTrends : [SavedTrend]? = try Storage.context.fetch(SavedTrend.fetchRequest())
             self.savedTrends = savedTrends
-        } catch { print("ERROR GETTING TRENDS")}
+        } catch {}
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -108,7 +107,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "A"{
-            //print("prepareForSegue")
             if let trend = sender as? Trend{
                 let destinationController = segue.destination as! TweetsController
                 destinationController.trend = trend
@@ -186,10 +184,8 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
             self.savedTrends?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            context.delete(savedTrend)
-            appDelegate.saveContext()
+            Storage.context.delete(savedTrend)
+            Storage.saveContext()
         }
     }
     

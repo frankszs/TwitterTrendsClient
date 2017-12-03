@@ -20,13 +20,9 @@ class TweetsController: UIViewController {
     var tweets : [Tweet]?
     
     var cacheDelegate : TweetCacheProtocol?
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var context : NSManagedObjectContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.context = appDelegate.persistentContainer.viewContext
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: #selector(reloadData), for: UIControlEvents.valueChanged)
@@ -98,12 +94,13 @@ class TweetsController: UIViewController {
     @IBAction func saveButtonDidTap(){
         
         //Create savedTrend
-        guard let context = self.context else { return }
+        let context = Storage.context
         let savedTrend = SavedTrend(context: context)
         savedTrend.name = self.trend?.name
         savedTrend.query = self.trend?.query
-        self.appDelegate.saveContext()
-        print("SAVED")
+        Storage.saveContext()
+        
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
 }
