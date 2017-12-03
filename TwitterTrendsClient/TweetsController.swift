@@ -9,17 +9,29 @@
 import UIKit
 import CoreData
 
+protocol TweetsControllerDelegate : class {
+    
+    func didUpdateSavedTrends()
+}
+
 class TweetsController: UIViewController {
+    
+    //MARK: - Properties
     
     let tweetCellID = "tweetCell"
     
     @IBOutlet var tableView : UITableView!
+    @IBOutlet var saveButton : UIBarButtonItem!
     var refreshControl : UIRefreshControl!
+    
+    weak var delegate : TweetsControllerDelegate?
     
     var trend : Trend?
     var tweets : [Tweet]?
     
     var cacheDelegate : TweetCacheProtocol?
+    
+    //MARK: - ViewController Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +44,20 @@ class TweetsController: UIViewController {
         self.tableView.estimatedRowHeight = 50
         
         self.tableView.register(UINib.init(nibName: "TweetCell", bundle: nil), forCellReuseIdentifier: tweetCellID)
+        self.tableView.contentInsetAdjustmentBehavior = .never
         
         self.navigationItem.title = self.trend?.name
         
+        print("fdf")
+        if Storage.trendIsSaved(trend: trend!){
+            print("Vd")
+            self.saveButton.title = "Remove"
+        }
+        
         self.reloadData()
     }
+    
+    //MARK: - Update Data Methods
     
     func reloadData(){
         
@@ -91,19 +112,35 @@ class TweetsController: UIViewController {
         }
     }
     
+    //MARK: - IBAction Methods
+    
     @IBAction func saveButtonDidTap(){
         
-        //Create savedTrend
-        let context = Storage.context
-        let savedTrend = SavedTrend(context: context)
-        savedTrend.name = self.trend?.name
-        savedTrend.query = self.trend?.query
-        Storage.saveContext()
+        if Storage.trendIsSaved(trend: self.trend!){
+            
+            //Delete trend.
+            _ = Storage.deleteSavedTrend(using: self.trend!)
+            Storage.saveContext()
+            self.saveButton.title = "Save"
+        }
         
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        else{
+            //Create savedTrend.
+            let context = Storage.context
+            let savedTrend = SavedTrend(context: context)
+            savedTrend.name = self.trend?.name
+            savedTrend.query = self.trend?.query
+            Storage.saveContext()
+            
+            self.saveButton.title = "Remove"
+        }
+        
+        self.delegate?.didUpdateSavedTrends()
     }
     
 }
+
+    //MARK: - UITableView Methods
 
 extension TweetsController : UITableViewDataSource, UITableViewDelegate{
     

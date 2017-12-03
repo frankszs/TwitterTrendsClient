@@ -11,16 +11,12 @@ import CoreData
 
 protocol TweetCacheProtocol{
     
-    /**Updates the cache with an array of Tweets for a Trend.
-     
-     - parameter tweets: hes
-     
-     */
     func updateCache(tweets : [Tweet], for trend : Trend)
 }
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
+    //MARK: - Properties
     
     let trendCellID = "trendCell"
     let segmentedHeaderViewID = "SegmentedHeaderView"
@@ -41,14 +37,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var tweetCache: NSMutableDictionary?
     
+    //MARK: - UIViewController Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        do{
-            let savedTrends : [SavedTrend]? = try Storage.context.fetch(SavedTrend.fetchRequest())
-            self.savedTrends = savedTrends
-        } catch {}
-        
+        self.updateSavedTrends()
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
@@ -59,25 +53,21 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         tableView.backgroundColor = UIColor.white
         
         self.tableView.register(UINib.init(nibName: "TrendCell", bundle: nil), forCellReuseIdentifier: trendCellID)
-        
         self.tableView.register(UINib.init(nibName: "SegmentedHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: segmentedHeaderViewID)
+        self.tableView.contentInsetAdjustmentBehavior = .never
         
         self.reloadData()
     }
     
-    func reloadData(){
-        
-        do{
-            let savedTrends : [SavedTrend]? = try Storage.context.fetch(SavedTrend.fetchRequest())
-            self.savedTrends = savedTrends
-        } catch {}
-        
+    //MARK: - Update Data Methods
+    
+    fileprivate func updateLatestTrends(){
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         Client.sharedInstance.getTopTrends(WOEID: "23424977", amount: 30, success: {trends in
             
             self.latestTrends = trends
-
+            
             //Reconstruct cache.
             self.tweetCache = NSMutableDictionary()
             for trend in self.latestTrends!{
@@ -96,33 +86,51 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 self.refreshControl.endRefreshing()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
-            }, failure: {error in
-                
-                DispatchQueue.main.async {
-                    self.refreshControl.endRefreshing()
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }, failure: {error in
+            
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }})
+    }
+    
+    fileprivate func updateSavedTrends(){
+        do{
+            let savedTrends : [SavedTrend]? = try Storage.context.fetch(SavedTrend.fetchRequest())
+            self.savedTrends = savedTrends
+        } catch {}
+    }
+    
+    func reloadData(){
+        
+        updateSavedTrends()
+        updateLatestTrends()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "A"{
+        if segue.identifier == "ToTweets"{
             if let trend = sender as? Trend{
                 let destinationController = segue.destination as! TweetsController
                 destinationController.trend = trend
                 let tweets = self.tweetCache?.object(forKey: trend.name!) as! [Tweet]?
                 destinationController.tweets = tweets
                 destinationController.cacheDelegate = self
+                destinationController.delegate = self
                 
             }
         }
     }
+    
+    //MARK: - IBAction Methods
     
     @IBAction func segmentedViewValueDidChange(_ segmnetedView : SegmentedView){
         
         self.tableView.reloadData()
     }
 }
+
+    //MARK: - UITableView Methods
 
 extension ViewController : UITableViewDataSource, UITableViewDelegate{
     
@@ -161,7 +169,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let trend : Trend? = self.showLatest ? self.latestTrends?[indexPath.row] : Trend.init(savedTrend:self.savedTrends?[indexPath.row])
-        self.performSegue(withIdentifier: "A", sender: trend)
+        self.performSegue(withIdentifier: "ToTweets", sender: trend)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
@@ -191,10 +199,24 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
     
 }
 
+    //MARK: - TweetCacheProtocol Methods
+
 extension ViewController : TweetCacheProtocol{
     
     func updateCache(tweets: [Tweet], for trend: Trend) {
         self.tweetCache?.setObject(tweets, forKey: trend.name! as NSCopying)
+    }
+}
+
+extension ViewController : TweetsControllerDelegate{
+    
+    func didUpdateSavedTrends() {
+        self.updateSavedTrends()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 

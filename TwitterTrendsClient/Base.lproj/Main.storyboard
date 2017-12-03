@@ -41,7 +41,7 @@
                     <navigationItem key="navigationItem" title="Trends" id="pkP-oc-ZPu"/>
                     <connections>
                         <outlet property="tableView" destination="b6y-ch-AOw" id="nwp-zk-Ex2"/>
-                        <segue destination="hxa-O6-5QE" kind="show" identifier="A" id="2WG-Av-nyk"/>
+                        <segue destination="hxa-O6-5QE" kind="show" identifier="ToTweets" id="2WG-Av-nyk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sN-kn-bx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,13 +78,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NLd-Pn-3hi">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hAK-j0-HCg">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="hAK-j0-HCg">
                             <connections>
                                 <action selector="saveButtonDidTap" destination="hxa-O6-5QE" id="qhe-4Z-vQN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="saveButton" destination="hAK-j0-HCg" id="Y9p-mh-c8A"/>
                         <outlet property="tableView" destination="Th3-AB-kNu" id="9g9-LB-NET"/>
                     </connections>
                 </viewController>

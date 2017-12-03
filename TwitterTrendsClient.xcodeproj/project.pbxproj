@@ -19,7 +19,6 @@
 		C8877EC11FD2B83E00B99E99 /* SavedTrend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8877EBF1FD2B83E00B99E99 /* SavedTrend+CoreDataClass.swift */; };
 		C8877EC21FD2B83E00B99E99 /* SavedTrend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8877EC01FD2B83E00B99E99 /* SavedTrend+CoreDataProperties.swift */; };
 		C895B62B1E3C0DBF00CB7D60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C895B62A1E3C0DBF00CB7D60 /* User.swift */; };
-		C8A74D311E3F0AA800C33302 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A74D301E3F0AA800C33302 /* SearchController.swift */; };
 		C8A74D331E3F200100C33302 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8A74D321E3F200100C33302 /* TweetCell.xib */; };
 		C8C211291E33CA5E00F394ED /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C211281E33CA5E00F394ED /* Client.swift */; };
 		C8D5DDD51E2E0E26007ACD44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D5DDD41E2E0E26007ACD44 /* AppDelegate.swift */; };
@@ -49,7 +48,6 @@
 		C8877EBF1FD2B83E00B99E99 /* SavedTrend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SavedTrend+CoreDataClass.swift"; path = "/Users/Fod/Documents/workspace2/TwitterTrendsClient/TwitterTrendsClient/SavedTrend+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		C8877EC01FD2B83E00B99E99 /* SavedTrend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SavedTrend+CoreDataProperties.swift"; path = "/Users/Fod/Documents/workspace2/TwitterTrendsClient/TwitterTrendsClient/SavedTrend+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		C895B62A1E3C0DBF00CB7D60 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		C8A74D301E3F0AA800C33302 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		C8A74D321E3F200100C33302 /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 		C8C211281E33CA5E00F394ED /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		C8D5DDD11E2E0E26007ACD44 /* TwitterTrendsClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterTrendsClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,7 +112,6 @@
 			children = (
 				C8D5DDD61E2E0E26007ACD44 /* ViewController.swift */,
 				C870A9C91E39A98100683EDA /* TweetsController.swift */,
-				C8A74D301E3F0AA800C33302 /* SearchController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -317,7 +314,6 @@
 				C85DFB171E39AEE10097C18B /* TweetCell.swift in Sources */,
 				C870A9C51E39A4C800683EDA /* Tweet.swift in Sources */,
 				C8C211291E33CA5E00F394ED /* Client.swift in Sources */,
-				C8A74D311E3F0AA800C33302 /* SearchController.swift in Sources */,
 				C8DD40361FD2714300450726 /* DataModel.xcdatamodeld in Sources */,
 				C895B62B1E3C0DBF00CB7D60 /* User.swift in Sources */,
 				C8E35AB61FD37CCB0034EA32 /* Storage.swift in Sources */,
@@ -388,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -433,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -449,6 +445,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FVL67XJLZ2;
 				INFOPLIST_FILE = TwitterTrendsClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = frankszs.net.TwitterTrendsClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -464,6 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FVL67XJLZ2;
 				INFOPLIST_FILE = TwitterTrendsClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = frankszs.net.TwitterTrendsClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";

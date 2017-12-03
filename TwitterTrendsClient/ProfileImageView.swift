@@ -14,7 +14,6 @@ class ProfileImageView: UIImageView {
         super.awakeFromNib()
         self.backgroundColor = UIColor.lightGray
         self.layer.masksToBounds = true
-    
     }
     
     override func layoutSubviews() {

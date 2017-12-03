@@ -43,8 +43,8 @@ IB_DESIGNABLE
 @property (nonatomic) BOOL delaySwitch;
 
 
--(void)doSomething;
--(void)setSetments:(NSArray <NSString *>*)strings;
 -(void)setSegments:(NSString *)string, ... NS_REQUIRES_NIL_TERMINATION;
+
+-(void)setSetments:(NSArray <NSString *>*)strings;
 
 @end
